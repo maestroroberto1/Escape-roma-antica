@@ -5,18 +5,25 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fuga dall'Antica Roma</title>
+    
+    <!-- Polyfill per process.env (essenziale per evitare lo schermo nero su GitHub) -->
+    <script>
+      window.process = { env: { API_KEY: "" } };
+    </script>
+
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Lexend:wght@100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    
     <script>
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#d4af37", // Oro
-                        "secondary": "#135bec", // Blu Romano
-                        "imperial": "#7f13ec", // Porpora
+                        "primary": "#d4af37",
+                        "secondary": "#135bec",
+                        "imperial": "#7f13ec",
                         "background-light": "#fdf8f1",
                         "background-dark": "#101622",
                         "parchment": "#f4e4bc",
@@ -33,14 +40,9 @@
     </script>
     <style type="text/tailwindcss">
         @layer base {
-            body {
-                @apply min-h-screen bg-background-light dark:bg-background-dark text-slate-900 dark:text-white overflow-x-hidden;
-            }
+            body { @apply min-h-screen bg-background-dark text-white overflow-x-hidden; }
         }
-        .ios-blur {
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-        }
+        .ios-blur { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
         .marble-texture {
             background-image: linear-gradient(120deg, rgba(0,0,0,0.02) 25%, transparent 25%, transparent 50%, rgba(0,0,0,0.02) 50%, rgba(0,0,0,0.02) 75%, transparent 75%, transparent);
             background-size: 100px 100px;
@@ -48,41 +50,37 @@
         .scroll-effect {
           background: #f4e4bc;
           background-image: url('https://www.transparenttextures.com/patterns/old-paper.png');
-          box-shadow: 
-            0 10px 20px rgba(0,0,0,0.5),
-            inset 0 0 100px rgba(139, 69, 19, 0.2);
-          border-left: 15px solid #d2b48c;
-          border-right: 15px solid #d2b48c;
+          box-shadow: 0 10px 20px rgba(0,0,0,0.5), inset 0 0 100px rgba(139, 69, 19, 0.2);
+          border-left: 15px solid #d2b48c; border-right: 15px solid #d2b48c;
           position: relative;
         }
-        .scroll-effect::before, .scroll-effect::after {
-          content: "";
-          position: absolute;
-          left: -20px;
-          right: -20px;
-          height: 30px;
-          background: #c3a683;
-          border-radius: 10px;
-          box-shadow: 0 5px 10px rgba(0,0,0,0.3);
-        }
-        .scroll-effect::before { top: -15px; }
-        .scroll-effect::after { bottom: -15px; }
     </style>
+
     <script type="importmap">
-    {
-      "imports": {
-        "react-dom/": "https://esm.sh/react-dom@^18.2.0/",
-        "@google/genai": "https://esm.sh/@google/genai@^1.40.0",
-        "react/": "https://esm.sh/react@^18.2.0/",
-        "react": "https://esm.sh/react@^18.2.0",
-        "react-dom": "https://esm.sh/react-dom@^18.2.0"
-      }
-    }
-    </script>
+{
+  "imports": {
+    "react": "https://esm.sh/react@18.2.0",
+    "react-dom": "https://esm.sh/react-dom@18.2.0",
+    "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
+    "@google/genai": "https://esm.sh/@google/genai@1.40.0",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/"
+  }
+}
+</script>
 </head>
 <body>
-    <div id="root"></div>
-    <!-- Caricamento esplicito del modulo principale -->
-    <script type="module" src="./index.tsx"></script>
+    <div id="root">
+      <div class="flex items-center justify-center min-h-screen">
+        <div class="text-center">
+          <h2 class="font-display text-primary text-2xl animate-pulse">CARICAMENTO URBE...</h2>
+          <p class="text-slate-500 text-sm mt-2">Attendere, prego...</p>
+        </div>
+      </div>
+    </div>
+    <!-- Caricamento tramite esm.sh per gestire i file .tsx direttamente -->
+    <script type="module">
+      import "./index.tsx";
+    </script>
 </body>
 </html>

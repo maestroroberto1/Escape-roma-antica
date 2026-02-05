@@ -1,5 +1,5 @@
 
-import { Puzzle, PuzzleType } from './types';
+import { Puzzle, PuzzleType } from './types.ts';
 
 export const PUZZLES: Puzzle[] = [
   {
@@ -16,7 +16,7 @@ export const PUZZLES: Puzzle[] = [
       { label: "Tunica di Seta", value: "L" },
       { label: "Lampada ad Olio", value: "II" }
     ],
-    correctAnswer: "67" // 5+10+50+2
+    correctAnswer: "67"
   },
   {
     id: 2,
@@ -56,34 +56,5 @@ export const PUZZLES: Puzzle[] = [
       "Rivestimento in cocciopesto impermeabile",
       "Inaugurazione del flusso idrico"
     ]
-  },
-  {
-    id: 4,
-    type: PuzzleType.MATCHING,
-    title: "I Gladiatori dell'Imperatore",
-    subtitle: "Munera Gladitoria",
-    description: "L'Anfiteatro Flavio ruggisce! Per dare inizio agli spettacoli, devi assegnare correttamente le armi ai gladiatori secondo la loro classe. Un errore nell'arena segnerà il destino della prova.",
-    image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?q=80&w=1200&auto=format&fit=crop",
-    location: "Colosseo",
-    data: {
-      left: [
-        { id: 'retiarius', label: 'Retiarius' },
-        { id: 'murmillo', label: 'Murmillo' },
-        { id: 'thraex', label: 'Thraex' },
-        { id: 'dimachaerus', label: 'Dimachaerus' }
-      ],
-      right: [
-        { id: 'w1', label: 'Rete e Tridente' },
-        { id: 'w2', label: 'Scudo e Gladius' },
-        { id: 'w3', label: 'Sica e Parmula' },
-        { id: 'w4', label: 'Due Spade Corte' }
-      ]
-    },
-    correctAnswer: {
-      'retiarius': 'w1',
-      'murmillo': 'w2',
-      'thraex': 'w3',
-      'dimachaerus': 'w4'
-    }
   }
 ];
