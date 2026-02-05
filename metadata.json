@@ -1,0 +1,7 @@
+{
+  "name": "Fuga dall'Antica Roma",
+  "description": "An interactive educational adventure set in Ancient Rome where users solve historical puzzles, logic challenges, and engineering enigmas to escape and gain Roman citizenship.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
